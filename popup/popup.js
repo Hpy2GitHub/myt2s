@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Populate voice select dropdown
             function populateVoiceSelect() {
-                voiceSelect.innerHTML = '';
+                                voiceSelect.textContent = '';
                 
                 // Add default option
                 const defaultOption = document.createElement('option');
@@ -185,9 +185,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isReading) {
                     statusElement.textContent = isPaused ? 'Paused' : 'Reading...';
                     
-                    playPauseBtn.innerHTML = isPaused ? 
-                        '<span>▶️</span> Resume' : 
-                        '<span>⏸️</span> Pause';
+                                        playPauseBtn.textContent = '';
+                    const iconSpan = document.createElement('span');
+                    iconSpan.textContent = isPaused ? '▶️' : '⏸️';
+                    playPauseBtn.appendChild(iconSpan);
+                    playPauseBtn.appendChild(document.createTextNode(isPaused ? ' Resume' : ' Pause'));
                 } else {
                     statusElement.textContent = 'Ready to read';
                     
